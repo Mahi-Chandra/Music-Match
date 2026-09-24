@@ -16,12 +16,12 @@ Music Match is a CLI-based application that analyses user's music taste based on
 - Personalized recommendations using collaborative filtering algorithm
 - Interactive CLI interface using Textual (TUI library)
  
-## TECHNOLOGIES ⚙️
+## TECHNOLOGIES
 - Python 3.8+
 - Textual (TUI library)
 - Git (version control)
 
-## INSTALLATION 🛠️
+## INSTALLATION
 ```bash
 git clone https://github.com/Mahi-Chandra/Music-Match.git
 cd Music-Match
