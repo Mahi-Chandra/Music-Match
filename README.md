@@ -1,12 +1,15 @@
 # Music Match 
-Music Match is a CLI-based application that analyses user's music taste based on input data and suggests personalized recommendations using collaborative filtering algorithm by matching with preferences of other users with shared tastes.
-
 
 ## TABLE OF CONTENTS
-1. [Features](#FEATURES)
-2. [Technologies and Tools Used](#TECHNOLOGIES)
-3. [Installation and Setup](#INSTALLATION)
-4. [Testing](#TESTING)
+1. [Overview of the Project](#OVERVIEW)
+2. [Features](#FEATURES)
+3. [Technologies and Tools Used](#TECHNOLOGIES)
+4. [Installation and Setup](#INSTALLATION)
+5. [Testing](#TESTING)
+6. [Screenshots](#SCREENSHOTS)
+
+## OVERVIEW
+Music Compass is a command line based music recommendation system that helps users discover songs tailored to their taste. It learns from user ratings of songs and artists and provides personalized recommendations based on collaborative filtering, allowing people to find music similar to the one they love and also connect with others who share similar interests.
 
 ## FEATURES 
 - User authentication
