@@ -1,15 +1,14 @@
-# Music Match 💿
-A CLI-based based music recommendation system that helps users discover songs and find recommendations through shared music tastes with other users.
+# Music Match 
+Music Match is a CLI-based application that analyses user's music taste based on input data and suggests personalized recommendations using collaborative filtering algorithm by matching with preferences of other users with shared tastes.
 
-## ABOUT MUSIC MATCH 🎧
-Music Match is a terminal based application where users can
-- Create accounts and build their music profiles
-- Rate and discover songs
-- Get personalized recommendations based on their taste and other user's preferences with similar tastes
-- View trending songs and top artists
-- See more insights
 
-## FEATURES 🚀
+## TABLE OF CONTENTS
+1. [Features](#FEATURES)
+2. [#Technologies](#TECHNOLOGIES)
+3. [Installation](#INSTALLATION)
+4. [Usage](#USAGE)
+
+## FEATURES 
 - User authentication
 - Add and rate songs
 - View top rated songs as well as artists
@@ -17,12 +16,12 @@ Music Match is a terminal based application where users can
 - Personalized recommendations using collaborative filtering algorithm
 - Interactive CLI interface using Textual (TUI library)
  
-## TOOLS USED ⚙️
+## TECHNOLOGIES ⚙️
 - Python 3.8+
 - Textual (TUI library)
 - Git (version control)
 
-## INSTALLATION AND SETUP 🛠️
+## INSTALLATION 🛠️
 ```bash
 git clone https://github.com/Mahi-Chandra/Music-Match.git
 cd Music-Match
