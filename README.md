@@ -6,7 +6,7 @@ Music Match is a CLI-based application that analyses user's music taste based on
 1. [Features](#FEATURES)
 2. [#Technologies](#TECHNOLOGIES)
 3. [Installation](#INSTALLATION)
-4. [Usage](#USAGE)
+4. [Testing](#TESTING)
 
 ## FEATURES 
 - User authentication
