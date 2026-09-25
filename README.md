@@ -9,7 +9,7 @@
 6. [Screenshots](#SCREENSHOTS)
 
 ## OVERVIEW
-Music Compass is a command line based music recommendation system that helps users discover songs tailored to their taste. It learns from user ratings of songs and artists and provides personalized recommendations based on collaborative filtering, allowing people to find music similar to the one they love and also connect with others who share similar interests.
+Music Match is a command line based music recommendation system that helps users discover songs tailored to their taste. It learns from user ratings of songs and artists and provides personalized recommendations based on collaborative filtering, allowing people to find music similar to the one they love and also connect with others who share similar interests.
 
 ## FEATURES 
 - User authentication
