@@ -15,7 +15,7 @@ def init_database():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS songs(
             song_id INTEGER PRIMARY KEY,
-            song_title TEXT NOT NULL,
+            song_title TEXT UNIQUE NOT NULL,
             artist TEXT NOT NULL,
             genre TEXT NOT NULL
         )
@@ -78,7 +78,7 @@ def add_song(title,artist,genre):
         conn.commit()
         print(f"Song added successfully")
     except sqlite3.IntegrityError as error:
-        print(f"Error: {error}")
+        print("This song already exists on the list!")
     finally:
         conn.close()
 
@@ -101,25 +101,44 @@ def rate_song(user_id, song_id, rating):
 def get_all_songs():
     conn = sqlite3.connect("musicmatch.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT id, song_title, artist, genre FROM songs")
+    cursor.execute("SELECT song_id, song_title, artist, genre FROM songs")
     songs = cursor.fetchall()
     conn.close()
-    print("="*30, "SONG LIST", "="*30)
-    for i in songs:
-        print(i)
+
+    if not songs:
+        print("\n  ✗ No songs in the database yet!")
+        return
+
+    w1, w2, w3, w4 = 6, 22, 18, 14
+    total = w1 + w2 + w3 + w4 + 5
+
+    print(f"\n  ┌{'─' * total}┐")
+    print(f"  │{'♫  SONG LIST':^{total}}│")
+    print(f"  ├{'─' * w1}┬{'─' * w2}┬{'─' * w3}┬{'─' * (w4 + 2)}┤")
+    print(f"  │ {'ID':<{w1 - 1}}│ {'Song':<{w2 - 1}}│ {'Artist':<{w3 - 1}}│ {'Genre':<{w4 + 1}}│")
+    print(f"  ├{'─' * w1}┼{'─' * w2}┼{'─' * w3}┼{'─' * (w4 + 2)}┤")
+    for s in songs:
+        sid = str(s[0])[:w1 - 2]
+        title = s[1][:w2 - 2]
+        artist = s[2][:w3 - 2]
+        genre = s[3][:w4]
+        print(f"  │ {sid:<{w1 - 1}}│ {title:<{w2 - 1}}│ {artist:<{w3 - 1}}│ {genre:<{w4 + 1}}│")
+    print(f"  └{'─' * w1}┴{'─' * w2}┴{'─' * w3}┴{'─' * (w4 + 2)}┘")
 
 def get_user_ratings(user_id):
     conn = sqlite3.connect("musicmatch.db")
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT song_id, rating
-        FROM ratings WHERE user_id = ?
+        SELECT ratings.song_id, songs.song_title, songs.artist, ratings.rating, ratings.rated_date
+        FROM ratings 
+        JOIN songs ON ratings.song_id = songs.song_id
+        WHERE ratings.user_id = ?
     """, (user_id,))
-    rows = cursor.fetchall()
+    row = cursor.fetchall()
     conn.close()
-    return[
-        {"song_id": r[0], "rating": r[1]}
-        for r in rows
+    return [
+    {"song_id": r[0], "song_title": r[1], "artist": r[2], "rating": r[3], "rated_date": r[4]}
+    for r in row
     ]
 
 def get_song_ratings(song_id):
@@ -129,7 +148,7 @@ def get_song_ratings(song_id):
         SELECT songs.song_title, users.user_id, ratings.rating, ratings.rated_date
         FROM ratings
         JOIN users ON ratings.user_id = users.user_id
-        JOIN songs ON ratings.song_id = songs.id
+        JOIN songs ON ratings.song_id = songs.song_id
         WHERE ratings.song_id = ?
     """,(song_id,))
     rows = cursor.fetchall()
@@ -139,6 +158,16 @@ def get_song_ratings(song_id):
             {"Song_Title": r[0], "User_ID": r[1], "Rating": r[2], "On date": r[3]}
             for r in rows
         ]
+    return None
+
+def get_song_by_id(song_id):
+    conn = sqlite3.connect("musicmatch.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT song_title, artist, genre FROM songs WHERE song_id = ?", (song_id,))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return {"Song Title": row[0], "Artist": row[1], "Genre": row[2]}
     return None
 
 def get_recommendations(user_id):
@@ -163,5 +192,9 @@ def get_recommendations(user_id):
                 recommended_songs[song_id] = recommended_songs.get(song_id, 0) + 1
     
     top_recommendations = sorted(recommended_songs.items(), key=lambda x: x[1], reverse=True)[:3]
-    return top_recommendations
-
+    results = []
+    for i, _ in top_recommendations:
+        song = get_song_by_id(i)
+        if song:
+            results.append(song)
+    return results
