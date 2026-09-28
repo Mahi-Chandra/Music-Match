@@ -16,7 +16,7 @@ Music Match creates a collaborative music recommendation system where:
 - Students can discover music their peers actually listen to and connect with them
 
 **Target Users:**
-- Students
+- Students in the campus
 - Music enthusiasts in campus
 - Anyone seeking collaborative music discovery
 
