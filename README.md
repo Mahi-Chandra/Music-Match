@@ -17,7 +17,7 @@ Music Match is a command line based music recommendation system that helps users
 - View top rated songs as well as artists
 - User preference matching through shared tastes
 - Personalized recommendations using collaborative filtering algorithm
-- Interactive CLI interface using Textual (TUI library)
+- Interactive CLI interface using ASCII art and unicode characters
  
 ## TECHNOLOGIES
 - Python 3.8+
