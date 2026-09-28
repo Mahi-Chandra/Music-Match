@@ -31,5 +31,3 @@ cd Music-Match
 pip install -r requirements.txt
 python src/main.py
 ```
-
-(in progress further)
