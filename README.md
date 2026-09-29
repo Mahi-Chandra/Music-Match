@@ -31,3 +31,5 @@ cd Music-Match
 pip install -r requirements.txt
 python src/main.py
 ```
+---
+This project is part of the Vityarthi Project for CSE 1021 - Introduction to Problem Solving and Programming for Fall Semester 2026-27 (FRESHERS)
