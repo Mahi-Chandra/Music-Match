@@ -5,8 +5,6 @@
 2. [Features](#FEATURES)
 3. [Technologies and Tools Used](#TECHNOLOGIES)
 4. [Installation and Setup](#INSTALLATION)
-5. [Testing](#TESTING)
-6. [Screenshots](#SCREENSHOTS)
 
 ## OVERVIEW
 Music Match is a command line based music recommendation system that helps users discover songs tailored to their taste. It learns from user ratings of songs and artists and provides personalized recommendations based on collaborative filtering, allowing people to find music similar to the one they love and also connect with others who share similar interests.
@@ -24,7 +22,7 @@ Music Match is a command line based music recommendation system that helps users
 - Textual (TUI library)
 - Git (version control)
 
-## INSTALLATION
+## INSTALLATION 
 ```bash
 git clone https://github.com/Mahi-Chandra/Music-Match.git
 cd Music-Match
@@ -32,4 +30,4 @@ pip install -r requirements.txt
 python src/main.py
 ```
 ---
-This project is part of the Vityarthi Project for CSE 1021 - Introduction to Problem Solving and Programming for Fall Semester 2026-27 (FRESHERS)
+This project is part of the Vityarthi Python Essentials Project for CSE 1021 - Introduction to Problem Solving and Programming for Fall Semester 2026-27 (FRESHERS)
